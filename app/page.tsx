@@ -1,14 +1,15 @@
-import Image from "next/image";
+
+import About from "./components/About";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="w-full font-sans grid grid-rows items-center justify-items-center">
+      <main className="w-full flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 
-        <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start mt-[60px]">
-          <section id="about" className="w-full mb-8 min-h-600">
-            About Brad
-          </section>
+        <main className="w-full flex flex-col gap-[32px] row-start-2 items-center sm:items-start mt-[60px]">
+
+          <About />
+
           <section id="projects" className="w-full mb-8 min-h-200">
             Projects Here
           </section>
