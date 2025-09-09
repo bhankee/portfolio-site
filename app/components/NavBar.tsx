@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import React, { useState } from "react";
 
 
@@ -8,9 +9,9 @@ export default function Navbar() {
 
     return (
         <nav className="w-full flex items-center justify-between px-4 sm:px-8 py-4 bg-white dark:bg-gray-900 shadow-sm fixed top-0 left-0 z-10">
-            <a href="/" className="font-bold text-lg text-gray-900 dark:text-white">
+            <Link href="/" className="font-bold text-lg text-gray-900 dark:text-white">
                 Brad Hankee
-            </a>
+            </Link>
             {/* Hamburger Icon */}
             <button
                 className="sm:hidden flex flex-col justify-center items-center w-8 h-8"
