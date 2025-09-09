@@ -18,7 +18,7 @@ const About: React.FC = () => {
                 <h2 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-200 bg-clip-text text-transparent drop-shadow-lg">Brad Hankee</h2>
                 <h3>Software Developer | JavaScript | Python</h3>
                 <Link
-                    href="/resume.pdf"
+                    href="./resume.pdf"
                     download
                     className="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow transition-colors duration-300 hover:from-blue-600 hover:to-purple-600 flex items-center justify-center text-center w-auto"
                 >
