@@ -4,30 +4,29 @@ import Link from 'next/link';
 
 const About: React.FC = () => {
     return (
-        <div className="w-full grid grid-cols-[1fr_2fr] gap-48 border-2 border-blue-600 min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-75">
-            <div className="w-full bg-blue p-4 border-2 border-green-600 flex justify-center items-center">
-                <Image
-                    src="/images/profile_pic.png"
-                    alt="Brad profile picture"
-                    width={320}
-                    height={320}
-                    className="mt-4 rounded-full object-cover border-2 border-indigo-600"
-                />
+        <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4 sm:p-12">
+            <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-8 sm:gap-16 border-2 border-blue-600 rounded-xl bg-opacity-80">
+                <div className="w-full bg-blue p-4 border-2 border-green-600 flex justify-center items-center rounded-xl">
+                    <Image
+                        src="/images/profile_pic.png"
+                        alt="Brad profile picture"
+                        width={220}
+                        height={220}
+                        className="mt-4 rounded-full object-cover border-2 border-indigo-600"
+                    />
+                </div>
+                <div className="w-full bg-red p-4 border-2 border-yellow-600 flex flex-col justify-center items-center rounded-xl text-center">
+                    <h2 className="text-3xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-200 bg-clip-text text-transparent drop-shadow-lg mb-2">Brad Hankee</h2>
+                    <h3 className="text-base sm:text-xl mb-4">Software Developer | JavaScript | Python</h3>
+                    <Link
+                        href="/resume.pdf"
+                        download
+                        className="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow transition-colors duration-300 hover:from-blue-600 hover:to-purple-600 flex items-center justify-center text-center w-auto"
+                    >
+                        Download Resume
+                    </Link>
+                </div>
             </div>
-            <div className="w-full bg-red p-4 border-2 border-yellow-600 flex flex-col justify-center items-center">
-                <h2 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-200 bg-clip-text text-transparent drop-shadow-lg">Brad Hankee</h2>
-                <h3>Software Developer | JavaScript | Python</h3>
-                <Link
-                    href="/documents/resume.pdf"
-                    download
-                    className="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow transition-colors duration-300 hover:from-blue-600 hover:to-purple-600 flex items-center justify-center text-center w-auto"
-                >
-                    Download Resume
-                </Link>
-            </div>
-
-
-
         </div>
     );
 }
