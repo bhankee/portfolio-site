@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const About: React.FC = () => {
     return (
-        <section id="about" className="w-full grid grid-cols-[1fr_2fr] gap-4 min-h-200 mb-8 border-2 border-blue-600 min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-75">
+        <div className="w-full grid grid-cols-[1fr_2fr] gap-48 border-2 border-blue-600 min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-75">
             <div className="w-full bg-blue p-4 border-2 border-green-600 flex justify-center items-center">
                 <Image
                     src="/images/profile_pic.png"
@@ -28,7 +28,7 @@ const About: React.FC = () => {
 
 
 
-        </section>
+        </div>
     );
 }
 
