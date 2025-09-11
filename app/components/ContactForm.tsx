@@ -13,8 +13,7 @@ export type FormData = {
 const ContactForm: React.FC = () => {
     const { register, handleSubmit } = useForm<FormData>();
 
-    const onSubmit = async (data: FormData, e: FormEvent) => {
-        e.preventDefault();
+    const onSubmit = async (data: FormData) => {
 
         try {
             const res = await fetch('/api/email', {
