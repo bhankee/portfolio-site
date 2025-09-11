@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { sendEmail } from '../utils/send-email';
 
 import { useForm } from 'react-hook-form';
@@ -13,9 +13,25 @@ export type FormData = {
 const ContactForm: React.FC = () => {
     const { register, handleSubmit } = useForm<FormData>();
 
-    function onSubmit(data: FormData) {
-        sendEmail(data);
-    }
+    const onSubmit = async (data: FormData, e: FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const res = await fetch('/api/email', {
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+            });
+            console.log('Form submitted, response:', res);
+
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
+
+
 
     return (
         <div className="min-h-200 max-w-lg mx-auto p-8 bg-white dark:bg-gray-900 rounded-lg shadow-md">
