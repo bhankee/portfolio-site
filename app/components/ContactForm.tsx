@@ -1,6 +1,6 @@
 "use client"
 import React, { FormEvent } from 'react';
-import { sendEmail } from '../utils/send-email';
+
 
 import { useForm } from 'react-hook-form';
 
@@ -23,7 +23,6 @@ const ContactForm: React.FC = () => {
                 },
                 method: 'POST',
             });
-            console.log('Form submitted, response:', res);
 
         } catch (error) {
             console.error('Error submitting form:', error);
