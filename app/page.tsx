@@ -9,15 +9,15 @@ export default function Home() {
         <section id="about" className="w-full mb-8 min-h-200">
           <About />
         </section>
-        <section id="projects" className="w-full mb-8 min-h-200">
+        {/* <section id="projects" className="w-full mb-8 min-h-200">
           Projects Here
-        </section>
+        </section> */}
         <section id="contact" className="w-full mb-8 min-h-200">
           <ContactForm />
         </section>
       </main>
       <footer className="w-full flex gap-6 flex-wrap items-center justify-center py-6 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300">
-        Footer
+        © Brad Hankee 2025
       </footer>
     </div>
   );
