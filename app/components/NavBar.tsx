@@ -27,9 +27,9 @@ export default function Navbar() {
                 <li>
                     <a href="#about" className="hover:underline text-gray-700 dark:text-gray-200">About</a>
                 </li>
-                {/* <li>
+                <li>
                     <a href="#projects" className="hover:underline text-gray-700 dark:text-gray-200">Projects</a>
-                </li> */}
+                </li>
                 <li>
                     <a href="#contact" className="hover:underline text-gray-700 dark:text-gray-200">Contact</a>
                 </li>
@@ -40,9 +40,9 @@ export default function Navbar() {
                     <li>
                         <a href="#about" className="hover:underline text-gray-700 dark:text-gray-200" onClick={() => setMenuOpen(false)}>About</a>
                     </li>
-                    {/* <li>
+                    <li>
                         <a href="#projects" className="hover:underline text-gray-700 dark:text-gray-200" onClick={() => setMenuOpen(false)}>Projects</a>
-                    </li> */}
+                    </li>
                     <li>
                         <a href="#contact" className="hover:underline text-gray-700 dark:text-gray-200" onClick={() => setMenuOpen(false)}>Contact</a>
                     </li>

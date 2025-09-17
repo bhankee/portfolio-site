@@ -1,18 +1,19 @@
 
 import About from "./components/About";
 import ContactForm from "./components/ContactForm";
+import Projects from "./components/Projects";
 
 export default function Home() {
   return (
-    <div className="w-full font-sans grid grid-rows items-center justify-items-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+    <div className="w-full font-sans grid grid-rows items-center justify-items-center min-h-screen">
       <main className="w-full flex flex-col gap-8 items-center sm:items-start mt-16 px-4 sm:px-0">
-        <section id="about" className="w-full mb-8 min-h-200">
+        <section id="about" className="w-full min-h-200">
           <About />
         </section>
-        {/* <section id="projects" className="w-full mb-8 min-h-200">
-          Projects Here
-        </section> */}
-        <section id="contact" className="w-full mb-8 min-h-200">
+        <section id="projects" className="w-full min-h-200">
+          <Projects />
+        </section>
+        <section id="contact" className="w-full min-h-200">
           <ContactForm />
         </section>
       </main>

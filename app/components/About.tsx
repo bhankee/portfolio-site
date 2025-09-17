@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'; // Import icons
+import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Import icons
 import { FaXTwitter } from 'react-icons/fa6'
 
 const About: React.FC = () => {
     return (
-        <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4 sm:p-12">
+        <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black sm:p-12">
             <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-8 sm:gap-16 rounded-xl bg-opacity-80">
                 <div className="mt-4 flex flex-col items-center">
                     <Image
