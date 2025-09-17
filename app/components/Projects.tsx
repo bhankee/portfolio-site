@@ -20,7 +20,7 @@ const projects: Project[] = [
 const Projects: React.FC = () => (
     <section id="projects" className="py-12 bg-gradient-to-br from-indigo-800 via-gray-700 to-gray-900 text-white">
         <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-900 via-blue-700 to-indigo-800 bg-clip-text text-transparent"> Current Project</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center "> Current Project</h2>
             <div
                 className={`grid gap-8 ${projects.length === 1
                     ? "justify-center"
