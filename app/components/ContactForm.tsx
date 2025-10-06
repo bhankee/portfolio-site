@@ -1,6 +1,5 @@
 "use client"
-import React, { FormEvent } from 'react';
-
+import React, { FormEvent, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
@@ -11,9 +10,11 @@ export type FormData = {
 };
 
 const ContactForm: React.FC = () => {
-    const { register, handleSubmit } = useForm<FormData>();
+    const { register, handleSubmit, reset } = useForm<FormData>();
+    const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
     const onSubmit = async (data: FormData) => {
+        setStatus('sending');
 
         try {
             const res = await fetch('/api/email', {
@@ -24,8 +25,23 @@ const ContactForm: React.FC = () => {
                 method: 'POST',
             });
 
+            if (res.ok) {
+                setStatus('sent');
+                // keep 'sent' state visible briefly, then reset
+                setTimeout(() => {
+                    setStatus('idle');
+                    reset();
+                }, 2500);
+            } else {
+                setStatus('error');
+                console.error('Failed to send message', await res.text());
+                setTimeout(() => setStatus('idle'), 2500);
+            }
+
         } catch (error) {
             console.error('Error submitting form:', error);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 2500);
         }
     };
 
@@ -58,9 +74,30 @@ const ContactForm: React.FC = () => {
                     />
                     <button
                         type="submit"
-                        className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow hover:from-blue-600 hover:to-purple-600 transition"
+                        disabled={status === 'sending' || status === 'sent'}
+                        className={`px-6 py-3 rounded-full text-white font-semibold shadow transition flex items-center justify-center gap-2 ${status === 'sent'
+                            ? 'bg-green-500 hover:bg-green-600'
+                            : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600'
+                            } ${status === 'sending' ? 'opacity-90 cursor-wait' : ''} ${status === 'sent' ? 'cursor-default' : ''}`}
                     >
-                        Send Message
+                        {status === 'sending' ? (
+
+                            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                            </svg>
+                        ) : status === 'sent' ? (
+
+                            <svg className="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.071 7.071a1 1 0 01-1.414 0L3.293 9.343a1 1 0 111.414-1.414L8 11.222l6.293-6.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                        ) : (
+
+                            <span>Send Message</span>
+                        )}
+
+                        {status === 'sent' ? <span className="ml-1">Sent</span> : null}
+                        {status === 'error' ? <span className="ml-1 text-red-100">Error</span> : null}
                     </button>
                 </form>
             )}
