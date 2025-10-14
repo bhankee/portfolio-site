@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/NavBar";
 
@@ -13,9 +13,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const poppins = Poppins({
+  weight: ["600", "700", "800"],
+  variable: "--font-poppins",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Brad Hankee - Software Engineer",
-  description: "Brad Hankee's personal portfolio website.",
+  title: "Brad Hankee | Web Developer",
+  description: "Portfolio of Brad Hankee – React, Next.js, and Python developer building modern web experiences.",
+  openGraph: {
+    title: "Brad Hankee | Web Developer",
+    description: "React, Next.js, and Python developer building modern web apps.",
+    url: "https://www.bradhankee.com",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         <Navbar />
         {children}

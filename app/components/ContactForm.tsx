@@ -77,7 +77,7 @@ const ContactForm: React.FC = () => {
                         disabled={status === 'sending' || status === 'sent'}
                         className={`px-6 py-3 rounded-full text-white font-semibold shadow transition flex items-center justify-center gap-2 ${status === 'sent'
                             ? 'bg-green-500 hover:bg-green-600'
-                            : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600'
+                            : 'bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600'
                             } ${status === 'sending' ? 'opacity-90 cursor-wait' : ''} ${status === 'sent' ? 'cursor-default' : ''}`}
                     >
                         {status === 'sending' ? (

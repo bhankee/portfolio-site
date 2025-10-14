@@ -18,7 +18,7 @@ const projects: Project[] = [
 ];
 
 const Projects: React.FC = () => (
-    <section id="projects" className="py-12 bg-gradient-to-br from-indigo-800 via-gray-700 to-gray-900 text-white">
+    <section id="projects" className="py-12 bg-gradient-to-br from-yellow-50 via-orange-50 to-white text-black">
         <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-center "> Current Project</h2>
             <div
@@ -58,7 +58,7 @@ const Projects: React.FC = () => (
                             </div>
                         ) : null}
 
-                        <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-blue-900 via-blue-700 to-indigo-800 bg-clip-text text-transparent">{project.title}</h3>
+                        <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-orange-600 bg-clip-text text-transparent">{project.title}</h3>
                         <p className="text-gray-700 mb-4 text-center">{project.description}</p>
 
                     </div>

@@ -1,48 +1,55 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Import icons
-import { FaXTwitter } from 'react-icons/fa6'
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const About: React.FC = () => {
-    return (
-        <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black sm:p-12">
-            <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-8 sm:gap-16 rounded-xl bg-opacity-80">
-                <div className="mt-4 flex flex-col items-center">
-                    <Image
-                        src="/images/profile_pic.png"
-                        alt="Brad profile picture"
-                        width={220}
-                        height={220}
-                        className="mt-4 rounded-full object-cover border-2 border-indigo-600"
-                    />
+    const words = ["discipline", "creativity", "energy"];
+    const [activeWord, setActiveWord] = useState("discipline");
 
-                    <div className="mt-6 flex flex-row gap-6">
-                        <Link href="https://github.com/bhankee" target="_blank" rel="noopener noreferrer">
-                            <FaGithub size={36} className="text-white-800 hover:text-indigo-600 transition-colors" />
+    useEffect(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+            i = (i + 1) % words.length;
+            setActiveWord(words[i]);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <>
+            <section className="relative flex flex-col-reverse md:flex-row items-center md:items-start justify-between max-w-5xl mx-auto py-24 px-6">
+                <div className="about-bg" aria-hidden />
+                <div className="about-panel w-full md:mx-0 md:w-full flex flex-col md:flex-row items-start relative z-10 ">
+                    <div className="md:w-1/2 flex justify-center mb-10 md:mb-0 relative z-20 order-1">
+                        <div className="relative">
+                            <img
+                                src="/images/profile_pic.png"
+                                alt="Brad Hankee"
+                                className="rounded-full w-48 h-48 border-4 border-yellow-400 shadow-lg"
+                            />
+                        </div>
+                    </div>
+                    {/* RIGHT: heading, animated paragraph, skills, resume */}
+                    <div className="md:w-1/2 text-center md:text-left space-y-6 order-2">
+                        <h1 className="text-5xl font-bold">
+                            Brad <span className="text-yellow-500">Hankee</span>
+                        </h1>
+                        <p className="text-gray-400">
+                            Specializing in <span className="text-yellow-500">React</span>, <span className="text-yellow-500">Next.js</span>, and <span className="text-yellow-500">Python</span>.
+                        </p>
+                        <Link
+                            href="/documents/resume.pdf"
+                            download
+                            className="mt-2 inline-block px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold shadow transition-colors duration-300 hover:from-yellow-500 hover:to-orange-600"
+                        >
+                            Download Resume
                         </Link>
-                        <Link href="https://linkedin.com/in/brad-hankee" target="_blank" rel="noopener noreferrer">
-                            <FaLinkedin size={36} className="text-white-700 hover:text-indigo-600 transition-colors" />
-                        </Link>
-                        {/* <Link href="https://x.com/brad_hankee" target="_blank" rel="noopener noreferrer">
-                            <FaXTwitter size={36} className="text-white-800 hover:text-indigo-600 transition-colors" />
-                        </Link> */}
                     </div>
                 </div>
-                <div className="w-full bg-red p-4 flex flex-col justify-center items-center rounded-xl text-center">
-                    <h2 className="text-3xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-200 bg-clip-text text-transparent drop-shadow-lg mb-2">Brad Hankee</h2>
-                    <h3 className="text-base sm:text-xl mb-4">Software Developer | JavaScript | Python</h3>
-                    <Link
-                        href="documents/resume.pdf"
-                        download
-                        className="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow transition-colors duration-300 hover:from-blue-600 hover:to-purple-600 flex items-center justify-center text-center w-auto"
-                    >
-                        Download Resume
-                    </Link>
-                </div>
-            </div>
-        </div>
+            </section>
+        </>
     );
-}
+};
 
 export default About;
+
