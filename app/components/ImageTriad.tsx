@@ -10,7 +10,7 @@ const items = [
 const ImageTriad: React.FC = () => {
     return (
         <section className="w-4/5 mx-auto px-6 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start justify-center">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-12 items-start justify-center">
                 {items.map((image, idx) => {
                     const imgSizeClass = idx === 1 ? "w-40 h-40 md:w-48 md:h-48" : "w-44 h-44 md:w-52 md:h-52";
 

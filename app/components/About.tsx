@@ -19,7 +19,7 @@ const About: React.FC = () => {
         <>
             <section className="relative flex flex-col-reverse md:flex-row items-center md:items-start justify-between max-w-5xl mx-auto py-24 px-6">
                 <div className="about-bg" aria-hidden />
-                <div className="about-panel w-full md:mx-0 md:w-full flex flex-col md:flex-row items-start relative z-10 ">
+                <div className="about-panel w-full md:mx-0 md:w-full flex flex-col md:flex-row relative z-10 ">
                     <div className="md:w-1/2 flex justify-center mb-10 md:mb-0 relative z-20 order-1">
                         <div className="relative">
                             <img
