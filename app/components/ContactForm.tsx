@@ -48,7 +48,7 @@ const ContactForm: React.FC = () => {
 
 
     return (
-        <div className="min-h-200 max-w-lg mx-auto p-8 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+        <div className="min-h-125 max-w-lg mx-auto p-8 bg-white dark:bg-gray-900 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-6 text-center">Contact Me</h2>
             {false ? (
                 <div className="text-green-600 text-center font-semibold">Thank you for your message!</div>

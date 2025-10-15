@@ -17,11 +17,11 @@ export default function Home() {
         <section id="projects" className="w-full min-h-200">
           <Projects />
         </section>
-        <section id="contact" className="w-full min-h-200">
+        <section id="contact" className="w-full ">
           <ContactForm />
         </section>
       </main>
-      <footer className="w-full flex gap-6 flex-wrap items-center justify-center py-6 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300">
+      <footer className="w-full flex gap-6 flex-wrap items-center justify-center py-6 mt-3 bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300">
         © Brad Hankee 2025
       </footer>
     </div>
