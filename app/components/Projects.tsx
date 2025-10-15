@@ -58,8 +58,8 @@ const Projects: React.FC = () => (
                             </div>
                         ) : null}
 
-                        <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-orange-600 bg-clip-text text-transparent">{project.title}</h3>
-                        <p className="text-gray-700 mb-4 text-center">{project.description}</p>
+                        <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-yellow-400 via-orange-400 to-orange-600 bg-clip-text text-primary">{project.title}</h3>
+                        <p className="text-dark mb-4 text-center">{project.description}</p>
 
                     </div>
                 ))}
