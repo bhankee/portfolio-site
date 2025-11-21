@@ -1,4 +1,3 @@
-
 import About from "./components/About";
 import ImageTriad from "./components/ImageTriad";
 import ContactForm from "./components/ContactForm";
@@ -11,9 +10,9 @@ export default function Home() {
         <section id="about" className="w-full h-screen">
           <About />
         </section>
-        <section id="image-triad" className="w-full">
+        {/* <section id="image-triad" className="w-full">
           <ImageTriad />
-        </section>
+        </section> */}
         <section id="projects" className="w-full min-h-200">
           <Projects />
         </section>
@@ -27,4 +26,3 @@ export default function Home() {
     </div>
   );
 }
-
