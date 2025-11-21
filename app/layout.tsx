@@ -21,10 +21,12 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Brad Hankee | Web Developer",
-  description: "Portfolio of Brad Hankee – React, Next.js, and Python developer building modern web experiences.",
+  description:
+    "Portfolio of Brad Hankee – React, Next.js, and Python developer building modern web experiences.",
   openGraph: {
     title: "Brad Hankee | Web Developer",
-    description: "React, Next.js, and Python developer building modern web apps.",
+    description:
+      "React, Next.js, and Python developer building modern web apps.",
     url: "https://www.bradhankee.com",
     type: "website",
   },

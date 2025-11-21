@@ -22,11 +22,10 @@ html {
 
 /* 1. Base background */
 body {
-  background-image: url("/textures/distressed-bg.webp");
+  background-image: url("/textures/distressed-bg-1.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  filter: contrast(0.95) saturate(0.85) sepia(0.1);
   color: var(--text-color);
   font-family: var(--font-body);
 }

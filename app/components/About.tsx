@@ -23,7 +23,7 @@ const About: React.FC = () => {
     about-panel
     w-full flex flex-col md:flex-row relative z-10
     rounded-2xl
-    bg-black/60
+    bg-black/70
     backdrop-blur-md
     border border-white/20
     shadow-2xl shadow-black/50
