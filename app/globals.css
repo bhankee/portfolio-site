@@ -9,13 +9,6 @@
   --font-heading: "JetBrains Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -36,7 +29,7 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: url("/textures/noise.png");
-  opacity: 0.2;
+  opacity: 0.5;
   pointer-events: none;
   mix-blend-mode: multiply;
   z-index: -1;
