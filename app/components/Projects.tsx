@@ -19,8 +19,8 @@ const projects: Project[] = [
       "A health monitoring application that pulls daily data from smart scales and uses AI to generate custom meal & activity plans.",
     image: "/images/roast-my-portfolio.png",
     technologies: ["Next.js", "Langchain", "Python", "Docker"],
-    githubUrl: "https://github.com/bhankee/health-ai",
-    liveUrl: "https://github.com/bhankee/health-ai",
+    githubUrl: "https://github.com/bhankee",
+    liveUrl: "https://roast-my-portfolio-ten.vercel.app/",
   },
   {
     id: 2,
@@ -35,46 +35,46 @@ const projects: Project[] = [
 ];
 
 const Projects: React.FC = () => (
-  <section className="relative py-32 px-6">
+  <section className="relative py-16 md:py-32 px-3 md:px-6">
     <div className="max-w-6xl mx-auto">
       {/* Projects Panel with Similar Styling to About */}
       <div
         className="
           relative z-10
-          rounded-2xl
+          rounded-xl md:rounded-2xl
           bg-black/60
           backdrop-blur-md
           border border-white/20
           shadow-2xl shadow-black/50
-          p-12
-          before:absolute before:inset-0 before:rounded-2xl
+          p-6 md:p-12
+          before:absolute before:inset-0 before:rounded-xl md:before:rounded-2xl
           before:bg-gradient-to-br before:from-white/[0.08] before:to-transparent
           before:pointer-events-none
         "
       >
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-heading tracking-tight text-white drop-shadow-lg mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading tracking-tight text-white drop-shadow-lg mb-4">
             Featured{" "}
             <span className="text-yellow-400 font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto"></div>
-          <p className="text-xl text-gray-300/90 mt-6 max-w-2xl mx-auto">
+          <div className="h-1 w-24 md:w-32 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto"></div>
+          <p className="text-lg md:text-xl text-gray-300/90 mt-4 md:mt-6 max-w-2xl mx-auto px-4 md:px-0">
             A showcase of my recent work in web development and software
             engineering.
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project) => (
             <div
               key={project.id}
               className="
                   group relative
-                  rounded-xl
+                  rounded-lg md:rounded-xl
                   bg-black/40
                   backdrop-blur-sm
                   border border-white/10
@@ -87,7 +87,7 @@ const Projects: React.FC = () => (
                 "
             >
               {/* Project Image */}
-              <div className="relative h-86 overflow-hidden">
+              <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -98,22 +98,22 @@ const Projects: React.FC = () => (
               </div>
 
               {/* Project Content */}
-              <div className="p-6 space-y-4">
-                <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
+              <div className="p-4 md:p-6 space-y-3 md:space-y-4">
+                <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-300/90 text-sm leading-relaxed">
+                <p className="text-gray-300/90 text-sm md:text-sm leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 md:gap-2">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="
-                          px-3 py-1 text-xs
+                          px-2 md:px-3 py-1 text-xs
                           bg-yellow-400/10
                           text-yellow-400
                           border border-yellow-400/20
@@ -127,14 +127,14 @@ const Projects: React.FC = () => (
                 </div>
 
                 {/* Project Links */}
-                <div className="flex gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 md:pt-4">
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="
-                          flex items-center gap-2 px-4 py-2
+                          flex items-center justify-center gap-2 px-4 py-2.5 md:py-2
                           bg-white/10 hover:bg-white/20
                           text-white hover:text-yellow-400
                           rounded-lg text-sm font-medium
@@ -158,7 +158,7 @@ const Projects: React.FC = () => (
                       target="_blank"
                       rel="noopener noreferrer"
                       className="
-                          flex items-center gap-2 px-4 py-2
+                          flex items-center justify-center gap-2 px-4 py-2.5 md:py-2
                           bg-gradient-to-r from-yellow-400 to-orange-400
                           hover:from-yellow-300 hover:to-orange-300
                           text-black font-medium text-sm
