@@ -5,19 +5,19 @@ import Projects from "./components/Projects";
 
 export default function Home() {
   return (
-    <div className="w-full font-sans grid grid-rows items-center justify-items-center min-h-screen">
-      <main className="w-full flex flex-col gap-8 items-center sm:items-start px-4 sm:px-0">
-        <section id="about" className="w-full h-screen pt-24">
+    <div className="w-full font-sans min-h-screen">
+      <main className="w-full space-y-16 md:space-y-24">
+        <section id="about" className="w-full min-h-screen pt-24">
           <About />
         </section>
-        <section id="projects" className="w-full min-h-200">
+        <section id="projects" className="w-full px-4 sm:px-0">
           <Projects />
         </section>
-        <section id="contact" className="w-full">
+        <section id="contact" className="w-full px-4 sm:px-0 pb-16">
           <ContactForm />
         </section>
       </main>
-      <footer className="w-full flex gap-6 flex-wrap items-center justify-center py-6 mt-3 bg-black/70 backdrop-blur-md border-t border-yellow-400/20 shadow-xl shadow-black/50 text-white">
+      <footer className="w-full flex gap-6 flex-wrap items-center justify-center py-6 bg-black/70 backdrop-blur-md border-t border-yellow-400/20 shadow-xl shadow-black/50 text-white">
         © Brad Hankee 2025
       </footer>
     </div>
