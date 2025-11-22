@@ -15,7 +15,7 @@ html {
 
 /* 1. Base background */
 body {
-  background-image: url("/textures/distressed-bg-1.webp");
+  background-image: url("/textures/distressed-bg-2.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
