@@ -10,6 +10,7 @@ const expertiseSections = [
     description:
       "8+ years delivering high-quality, production-ready applications using React, Next.js, TypeScript, and Python. Comfortable owning features from idea to deployment.",
     imageSrc: "/images/engineering.png",
+    bullets: ["React", "Mentoring", "TypeScript", "Python"],
   },
   {
     id: "ai",
@@ -17,6 +18,7 @@ const expertiseSections = [
     description:
       "Building AI-powered tools with GPT-4o, LangChain, and FastAPI—focusing on smarter user experiences, automation, and actionable insights.",
     imageSrc: "/images/ai.png",
+    bullets: ["React", "Mentoring", "TypeScript", "Python"],
   },
   {
     id: "business",
@@ -24,6 +26,7 @@ const expertiseSections = [
     description:
       "Business-trained engineer who aligns technical decisions with KPIs, user needs, and strategy. I care about shipped impact, not just shipped code.",
     imageSrc: "/images/business.png",
+    bullets: ["React", "Mentoring", "TypeScript", "Python"],
   },
 ];
 
@@ -58,21 +61,15 @@ export default function Expertise() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true, amount: 0.3 }}
-            className={`
-              relative overflow-hidden
-              rounded-2xl border border-gray-200
-              bg-gradient-to-r from-blue-50/60 to-white
-              shadow-lg
-              px-6 py-10 md:px-10 md:py-14
-            `}
+            className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-r from-blue-50/60 to-white shadow-lg px-6 py-10 md:px-10 md:py-14"
           >
+            {/* Top section: image + text */}
             <div
-              className={`
-                flex flex-col items-center gap-10
-                md:gap-12
-                ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
-              `}
+              className={`flex flex-col items-center gap-10 md:gap-12 ${
+                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              }`}
             >
+              {/* Floating image */}
               <motion.div
                 className="md:w-5/12 w-full flex justify-center"
                 animate={floatAnimation.animate}
@@ -87,6 +84,8 @@ export default function Expertise() {
                   />
                 </div>
               </motion.div>
+
+              {/* Text block */}
               <div className="md:w-7/12 w-full text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-semibold text-blue-800 mb-4">
                   {item.title}
@@ -96,6 +95,25 @@ export default function Expertise() {
                 </p>
               </div>
             </div>
+
+            {/* NOW the bullet list is *outside* the flex row, so always at the bottom */}
+            <ul className="flex flex-wrap justify-center gap-2 pt-10">
+              {item.bullets.map((bullet, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-2 text-gray-700 hover:text-blue-800 text-lg transition"
+                >
+                  <span
+                    className={`${
+                      i === 0 ? "hidden" : "text-yellow-500 text-xl"
+                    }`}
+                  >
+                    •
+                  </span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
           </motion.section>
         ))}
       </div>
