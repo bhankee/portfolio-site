@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   title: "Brad Hankee | Web Developer",
   description:
     "Portfolio of Brad Hankee – React, Next.js, and Python developer building modern web experiences.",
+  icons: {
+    icon: "/images/favicon.svg",
+  },
   openGraph: {
     title: "Brad Hankee | Web Developer",
     description:
