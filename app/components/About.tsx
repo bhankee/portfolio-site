@@ -24,8 +24,7 @@ const About: React.FC = () => {
           width={250}
           height={250}
           priority
-          className="rounded-full border-4 border-blue-900 shadow-lg ring-4 ring-blue-900/20 
-       transition-all duration-500 hover:scale-[1.05]"
+          className="rounded-full border-4 border-blue-900 shadow-lg ring-4 ring-blue-900/20"
         />
         <div className="flex gap-4 mt-4">
           <Link
