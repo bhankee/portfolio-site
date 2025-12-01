@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { CheckCircle } from "lucide-react";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,7 +15,7 @@ const About: React.FC = () => {
   return (
     <>
       <section className="relative flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto py-16 px-6">
-        <div className="w-full md:w-1/2 flex justify-center mb-10 md:mb-0 order-1 md:order-2">
+        <div className="w-full md:w-1/2 flex flex-col items-center mb-10 md:mb-0 order-1 md:order-2">
           <Image
             src="/images/profile_pic.png"
             alt="Brad Hankee"
@@ -22,8 +23,39 @@ const About: React.FC = () => {
             height={250}
             priority
             className="rounded-full border-4 border-blue-900 shadow-lg ring-4 ring-blue-900/20 
-                 transition-all duration-500 hover:scale-[1.05]"
+       transition-all duration-500 hover:scale-[1.05]"
           />
+
+          {/* 🔗 Social Icons */}
+          <div className="flex gap-4 mt-4">
+            <Link
+              href="https://www.linkedin.com/in/brad-hankee"
+              target="_blank"
+              className="p-2 rounded-full hover:bg-blue-50 transition group"
+            >
+              <Image
+                src="/images/icons/linkedin.svg"
+                alt="LinkedIn"
+                width={28}
+                height={28}
+                className="group-hover:scale-110 transition-transform"
+              />
+            </Link>
+
+            <Link
+              href="https://github.com/bhankee"
+              target="_blank"
+              className="p-2 rounded-full hover:bg-blue-50 transition group"
+            >
+              <Image
+                src="/images/icons/github.svg"
+                alt="GitHub"
+                width={28}
+                height={28}
+                className="group-hover:scale-110 transition-transform"
+              />
+            </Link>
+          </div>
         </div>
         <div className="w-full md:w-1/2 text-center md:text-left space-y-6 md:pl-8 order-2 md:order-1">
           <div>
