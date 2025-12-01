@@ -1,14 +1,17 @@
 import About from "./components/About";
-import ImageTriad from "./components/ImageTriad";
+import Expertise from "./components/Expertise";
 import ContactForm from "./components/ContactForm";
 import Projects from "./components/Projects";
 
 export default function Home() {
   return (
     <div className="w-full font-sans min-h-screen">
-      <main className="w-full space-y-16 md:space-y-24">
+      <main className="w-full space-y-2 md:space-y-2">
         <section id="about" className="w-full min-h-screen pt-24">
           <About />
+        </section>
+        <section id="expertise" className="w-full px-4 sm:px-0">
+          <Expertise />
         </section>
         <section id="projects" className="w-full px-4 sm:px-0">
           <Projects />

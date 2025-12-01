@@ -1,6 +1,5 @@
 "use client";
-import React, { FormEvent, useState } from "react";
-
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export type FormData = {
@@ -21,74 +20,70 @@ const ContactForm: React.FC = () => {
     try {
       const res = await fetch("/api/email", {
         body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         method: "POST",
       });
 
       if (res.ok) {
         setStatus("sent");
-        // keep 'sent' state visible briefly, then reset
         setTimeout(() => {
-          setStatus("idle");
           reset();
+          setStatus("idle");
         }, 2500);
       } else {
-        setStatus("error");
-        console.error("Failed to send message", await res.text());
-        setTimeout(() => setStatus("idle"), 2500);
+        throw new Error("Failed to send");
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    } catch {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 2500);
     }
   };
 
   return (
-    <div className="min-h-125 max-w-lg mx-auto p-8 bg-black/70 backdrop-blur-md border border-yellow-400/20 shadow-xl shadow-black/50 rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center text-white">
-        Contact Me
-      </h2>
-      {false ? (
-        <div className="text-green-400 text-center font-semibold">
-          Thank you for your message!
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+    <section className="py-16 max-w-xl mx-auto px-6">
+      <div className="bg-white/80 backdrop-blur-md border border-gray-200 shadow-lg rounded-2xl p-8 md:p-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-800">
+          Contact Me
+        </h2>
+        <div className="mt-3 h-1 w-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto"></div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 mt-8"
+        >
           <input
             type="text"
             placeholder="Name"
             {...register("name", { required: true })}
-            className="px-4 py-2 rounded border border-white/20 bg-black/40 backdrop-blur-sm text-white placeholder-gray-400 focus:border-yellow-400/50 focus:outline-none transition-colors"
+            className="px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500 transition"
           />
           <input
             type="email"
             placeholder="Your Email"
             {...register("email", { required: true })}
-            className="px-4 py-2 rounded border border-white/20 bg-black/40 backdrop-blur-sm text-white placeholder-gray-400 focus:border-yellow-400/50 focus:outline-none transition-colors"
+            className="px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500 transition"
           />
           <textarea
             placeholder="Your Message"
-            {...register("message", { required: true })}
             rows={5}
-            className="px-4 py-2 rounded border border-white/20 bg-black/40 backdrop-blur-sm text-white placeholder-gray-400 focus:border-yellow-400/50 focus:outline-none transition-colors resize-none"
+            {...register("message", { required: true })}
+            className="px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500 transition resize-none"
           />
           <button
             type="submit"
             disabled={status === "sending" || status === "sent"}
-            className={`px-6 py-3 rounded-full text-black font-semibold shadow-xl transition-all duration-300 flex items-center justify-center gap-2 ${
-              status === "sent"
-                ? "bg-green-500 hover:bg-green-600 text-white"
-                : "bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 hover:scale-105"
-            } ${status === "sending" ? "opacity-90 cursor-wait" : ""} ${
-              status === "sent" ? "cursor-default" : ""
-            }`}
+            className={`py-3 rounded-full font-semibold shadow-md transition-all duration-300 flex items-center justify-center gap-2
+              ${
+                status === "sent"
+                  ? "bg-green-500 hover:bg-green-600 text-white"
+                  : "bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white"
+              }
+              ${status === "sending" ? "opacity-90 cursor-wait" : ""}
+              ${status === "sent" ? "cursor-default" : ""}
+            `}
           >
             {status === "sending" ? (
               <svg
-                className="animate-spin h-5 w-5 text-black"
+                className="animate-spin h-5 w-5 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -108,30 +103,48 @@ const ContactForm: React.FC = () => {
                 ></path>
               </svg>
             ) : status === "sent" ? (
-              <svg
-                className="h-5 w-5 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-7.071 7.071a1 1 0 01-1.414 0L3.293 9.343a1 1 0 111.414-1.414L8 11.222l6.293-6.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <>
+                <svg
+                  className="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-7.071 7.071a1 1 0 01-1.414 0L3.293 9.343a1 1 0 111.414-1.414L8 11.222l6.293-6.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>Sent</span>
+              </>
             ) : (
-              <span>Send Message</span>
+              <>
+                <svg
+                  className="h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 17l4 4m0 0l4-4m-4 4V3"
+                  />
+                </svg>
+                <span>Send Message</span>
+              </>
             )}
 
-            {status === "sent" ? <span className="ml-1">Sent</span> : null}
-            {status === "error" ? (
-              <span className="ml-1 text-red-100">Error</span>
-            ) : null}
+            {status === "error" && (
+              <span className="text-red-100 ml-1">Error</span>
+            )}
           </button>
         </form>
-      )}
-    </div>
+      </div>
+    </section>
   );
 };
 
