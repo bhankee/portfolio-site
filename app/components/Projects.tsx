@@ -27,7 +27,7 @@ const projects: Project[] = [
     title: "My Health AI",
     description:
       "A health tracking platform that pulls daily analytics and uses AI to generate meal and activity guidance, helping users optimize weight loss and wellness goals.",
-    image: "/images/health-ai-1.png",
+    image: "/images/health-ai.png",
     tech: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
     githubUrl: "https://github.com/bhankee/health-ai",
     liveUrl: "https://github.com/bhankee/health-ai",
@@ -42,7 +42,7 @@ const Projects: React.FC = () => (
         <span className="text-yellow-500">Projects</span>
       </h2>
       <div className="mt-3 h-1 w-28 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto"></div>
-      <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
+      <p className=" text-lg text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
         A showcase of impactful solutions and intelligent applications I’ve
         built — combining AI engineering, thoughtful design, and measurable
         impact.
@@ -54,7 +54,6 @@ const Projects: React.FC = () => (
           key={project.id}
           className="group relative w-full overflow-hidden rounded-2xl bg-white/80 backdrop-blur-md shadow-lg hover:shadow-xl border border-gray-200 transition-all duration-300"
         >
-          {/* Image */}
           <div className="relative w-full h-44 overflow-hidden rounded-t-2xl">
             <Image
               src={project.image}
