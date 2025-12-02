@@ -50,62 +50,69 @@ const Projects: React.FC = () => (
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {projects.map((project) => (
-        <div
+        <a
           key={project.id}
-          className="group relative w-full overflow-hidden rounded-2xl bg-white/80 backdrop-blur-md shadow-lg hover:shadow-xl border border-gray-200 transition-all duration-300"
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 font-medium hover:translate-x-1 transition-all flex items-center gap-1"
         >
-          <div className="relative w-full h-44 overflow-hidden rounded-t-2xl">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className={`
+          <div className="group relative w-full overflow-hidden rounded-2xl bg-white/80 backdrop-blur-md shadow-lg hover:shadow-xl border border-gray-200 transition-all duration-300">
+            <div className="relative w-full h-44 overflow-hidden rounded-t-2xl">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className={`
       object-cover transform transition-transform duration-500 group-hover:scale-105
       ${project.id === 1 ? "object-top" : ""}
     `}
-            />
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-semibold text-blue-900 mb-2">
-              {project.title}
-            </h3>
-
-            <p className="text-gray-700 text-sm mb-4">{project.description}</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.tech.map((tech, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 text-xs bg-blue-50 text-blue-600 rounded-full border border-blue-200"
-                >
-                  {tech}
-                </span>
-              ))}
+              />
             </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-blue-900 mb-2">
+                {project.title}
+              </h3>
 
-            <div className="flex gap-4">
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 font-medium hover:translate-x-1 transition-all flex items-center gap-1"
-                >
-                  Live Demo →
-                </a>
-              )}
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-800 transition-all"
-                >
-                  GitHub
-                </a>
-              )}
+              <p className="text-gray-700 text-sm mb-4">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 text-xs bg-blue-50 text-blue-600 rounded-full border border-blue-200"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-4">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-medium hover:translate-x-1 transition-all flex items-center gap-1"
+                  >
+                    Live Demo →
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-gray-800 transition-all"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </section>
