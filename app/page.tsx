@@ -2,10 +2,12 @@ import About from "./components/About";
 import Expertise from "./components/Expertise";
 import ContactForm from "./components/ContactForm";
 import Projects from "./components/Projects";
+import EmailCaptureModal from "./components/EmailCaptureModal";
 
 export default function Home() {
   return (
     <div className="w-full font-sans min-h-screen">
+      <EmailCaptureModal />
       <main className="w-full space-y-2 md:space-y-2">
         <section id="about" className="w-full min-h-screen pt-24">
           <About />
