@@ -99,8 +99,8 @@ export default function EmailCaptureModal() {
             </h2>
 
             <p className="text-gray-700 text-lg mb-8 text-center leading-relaxed">
-              Enter your email and I'll send a downloadable version straight to
-              your inbox.
+              Enter your email and I&apos;ll send a downloadable version
+              straight to your inbox.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
