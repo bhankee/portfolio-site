@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 const RESEND_EMAIL_API_KEY = process.env.RESEND_EMAIL_API_KEY;
-
 const RESUME_URL = process.env.RESUME_URL;
 
 export async function POST(request: Request) {
@@ -21,12 +20,13 @@ export async function POST(request: Request) {
       Authorization: `Bearer ${RESEND_EMAIL_API_KEY}`,
     },
     body: JSON.stringify({
-      from: "Brad Hankee <brad.hankee@gmail.com>",
+      from: "Brad Hankee <onboarding@resend.dev>", // must be a verified sender
+      reply_to: "brad.hankee@gmail.com", // <-- THIS makes replies go to you
       to: [email],
       subject: "Brad Hankee's Resume",
       html: `
         <div style="font-family: sans-serif; line-height: 1.5;">
-          <h2>Here’s your copy of my resume. Please reach out if your have any questions.</h2>
+          <h2>Here’s your copy of my resume. Please reach out if you have any questions.</h2>
           <p>Thanks for checking out my portfolio! You can download my resume below:</p>
           <p>
             <a href="${RESUME_URL}" 
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
                 Download Brad's Resume
             </a>
           </p>
-          <h4>Feel free to reply directly to this email!</h4>
+          <p>If you have any questions or want to chat, feel free to reply directly to this email!</p>
         </div>
       `,
     }),
