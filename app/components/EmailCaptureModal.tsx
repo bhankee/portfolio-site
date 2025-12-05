@@ -128,7 +128,7 @@ export default function EmailCaptureModal() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full py-4 text-xl rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70"
+                className="w-full py-4 text-xl rounded-xl bg-blue-600 hover:bg-blue-500 !text-white font-semibold shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70"
               >
                 {status === "sending" ? (
                   <>
