@@ -1,4 +1,3 @@
-import Image from "next/image";
 import BlogCard from "../components/BlogCard";
 
 export const revalidate = 3600;

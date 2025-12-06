@@ -2,9 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEventHandler } from "react";
 
-export default function NavLink({ label, href, onClick, className }: any) {
+interface NavLinkProps {
+  label: string;
+  href: string; // anchor or route fragment, e.g. "#about"
+  className?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+}
+
+export default function NavLink({
+  label,
+  href,
+  onClick,
+  className,
+}: NavLinkProps) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
