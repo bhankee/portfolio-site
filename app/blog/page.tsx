@@ -2,7 +2,20 @@ import BlogCard from "../components/BlogCard";
 
 export const revalidate = 3600;
 
-async function getPosts() {
+interface DevToPost {
+  id: number;
+  title: string;
+  url: string;
+  description: string | null;
+  cover_image: string | null;
+  social_image: string | null;
+  published_at: string;
+  readable_publish_date: string;
+  slug: string;
+  tags: string;
+}
+
+async function getPosts(): Promise<DevToPost[]> {
   const res = await fetch(
     `https://dev.to/api/articles?username=bhankee&api_key=${process.env.DEV_TO_API_KEY}`,
     { next: { revalidate: 3600 } }
@@ -24,13 +37,17 @@ export default async function BlogPage() {
       <div className="h-1 w-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto mb-16" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {posts.map((post: any) => (
+        {posts.map((post) => (
           <BlogCard
             key={post.id}
             title={post.title}
             url={post.url}
-            description={post.description}
-            image={post.cover_image || post.social_image}
+            description={post.description || ""}
+            image={
+              post.cover_image ||
+              post.social_image ||
+              "/images/blog-placeholder.png"
+            }
           />
         ))}
       </div>
