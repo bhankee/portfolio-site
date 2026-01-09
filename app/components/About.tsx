@@ -70,15 +70,14 @@ const About: React.FC = () => {
         </div>
         <ul className="space-y-4 text-gray-800">
           {aboutMeList.map((text, index) => (
-            <li
-              key={index}
-              className="flex items-start gap-3 justify-center md:justify-start"
-            >
+            <li key={index} className="flex items-start gap-3">
               <CheckCircle
                 size={24}
-                className="text-blue-600 shrink-0 transition-transform duration-300 group-hover:scale-110"
+                className="text-blue-600 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
               />
-              <span className="text-lg font-medium">{text}</span>
+              <span className="text-lg font-medium text-left flex-1">
+                {text}
+              </span>
             </li>
           ))}
         </ul>
