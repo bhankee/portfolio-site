@@ -22,7 +22,7 @@ const projects: Project[] = [
     image: "/images/roast-my-portfolio.png",
     tech: ["Next.js", "Langchain", "Python", "Docker"],
     githubUrl: "https://github.com/bhankee",
-    liveUrl: "https://roast-my-portfolio-ten.vercel.app/",
+    liveUrl: "https://roastmyportfolio.ai",
   },
   {
     id: 2,
