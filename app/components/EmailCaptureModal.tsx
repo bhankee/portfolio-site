@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import validateEmail from "../utils/validateEmail";
+import ReactDom from "react-dom";
 
 export default function EmailCaptureModal() {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,6 @@ export default function EmailCaptureModal() {
   const [emailError, setEmailError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
 
-  // Auto-open after 3 seconds
   useEffect(() => {
     const lastShown = localStorage.getItem("resumeModalLastShown");
 
@@ -64,15 +64,12 @@ export default function EmailCaptureModal() {
 
   if (!open) return null;
 
-  return (
+  return ReactDom.createPortal(
     <div
-      className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-[9999] animate-fadeIn"
+      className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center animate-fadeIn"
       onClick={() => setOpen(false)}
     >
-      <div
-        className="bg-white rounded-3xl shadow-2xl p-10 w-11/12 max-w-xl relative animate-scaleIn"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="bg-white rounded-3xl shadow-2xl p-10 w-11/12 max-w-xl relative animate-scaleIn">
         {status !== "success" && (
           <button
             onClick={() => setOpen(false)}
@@ -143,6 +140,7 @@ export default function EmailCaptureModal() {
           </>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
