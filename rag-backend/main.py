@@ -68,6 +68,16 @@ def get_db_conn() -> psycopg.Connection:
 def debug_search(q: str):
     return {"q": q, "context": get_relevant_context(q, top_k=5)}
 
+@app.get("/debug/counts")
+def debug_counts():
+    with get_db_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("select count(*) from documents;")
+            docs = cur.fetchone()[0]
+            cur.execute("select count(*) from chunks;")
+            chunks = cur.fetchone()[0]
+    return {"documents": docs, "chunks": chunks}
+
 
 
 @app.get("/health/db")
