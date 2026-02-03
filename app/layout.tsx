@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/NavBar";
 
 import { Analytics } from "@vercel/analytics/next";
+import ChatBot from "./components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Analytics />
+        <ChatBot />
       </body>
     </html>
   );

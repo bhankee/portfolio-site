@@ -2,16 +2,17 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+This repo contains:
+
+- **Frontend**: Next.js app in `my-portfolio/`
+- **Backend**: Python FastAPI RAG chatbot in `rag-backend/`
+
+### Frontend (Next.js)
+
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -19,6 +20,36 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+### Backend (Python RAG Chatbot)
+
+The frontend calls `POST /api/chat`, which proxies to the Python backend URL from `PYTHON_RAG_API_URL`.
+
+1. Create `rag-backend/.env` with your key:
+
+```bash
+OPENAI_API_KEY=sk-...
+```
+
+2. Install backend deps and run the server:
+
+```bash
+cd ../rag-backend
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 -m uvicorn main:app --reload --port 8000
+```
+
+3. Point the Next.js app at the backend.
+
+Create or edit `my-portfolio/.env.local`:
+
+```bash
+PYTHON_RAG_API_URL=http://localhost:8000/chat
+```
+
+Then restart `npm run dev`.
 
 ## Learn More
 
