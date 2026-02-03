@@ -40,3 +40,22 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 my-portfolio-backup/
+
+# Node / Next.js
+node_modules/
+.next/
+dist/
+.vercel/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Env
+.env
+.env.*
+
+# Backups
+my-portfolio-backup/
+
