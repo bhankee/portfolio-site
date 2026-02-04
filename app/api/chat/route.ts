@@ -11,15 +11,15 @@ export async function POST(req: NextRequest) {
       messages: ChatMessage[];
     };
 
-    const pythonApiUrl = process.env.PYTHON_RAG_API_URL;
+    const pythonApiUrl = process.env.NEXT_PUBLIC_RAG_API_URL;
 
     if (!pythonApiUrl) {
       return NextResponse.json(
         {
           error:
-            "Chat backend is not configured. Please set PYTHON_RAG_API_URL on the server.",
+            "Chat backend is not configured. Please set NEXT_PUBLIC_RAG_API_URL on the server.",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -32,13 +32,13 @@ export async function POST(req: NextRequest) {
     });
 
     if (!res.ok) {
-      const data = (await res.json().catch(() => null)) as
-        | { error?: string }
-        | null;
+      const data = (await res.json().catch(() => null)) as {
+        error?: string;
+      } | null;
       console.error("Python RAG backend error:", data);
       return NextResponse.json(
         { error: data?.error || "Python chat backend returned an error." },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -51,8 +51,7 @@ export async function POST(req: NextRequest) {
     console.error("Chat API proxy error:", error);
     return NextResponse.json(
       { error: "Something went wrong while calling the chat backend." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-

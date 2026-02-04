@@ -23,7 +23,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ### Backend (Python RAG Chatbot)
 
-The frontend calls `POST /api/chat`, which proxies to the Python backend URL from `PYTHON_RAG_API_URL`.
+The frontend calls `POST /api/chat`, which proxies to the Python backend URL from `NEXT_PUBLIC_RAG_API_URL`.
 
 1. Create `rag-backend/.env` with your key:
 
@@ -46,7 +46,7 @@ python3 -m uvicorn main:app --reload --port 8000
 Create or edit `my-portfolio/.env.local`:
 
 ```bash
-PYTHON_RAG_API_URL=http://localhost:8000/chat
+NEXT_PUBLIC_RAG_API_URL=http://localhost:8000/chat
 ```
 
 Then restart `npm run dev`.
