@@ -119,20 +119,17 @@ def replace_chunks(document_id: str, chunks: List[str]) -> None:
 
 
 def ingest_resume() -> None:
-    """
-    Loads resume.pdf -> chunks -> embeddings -> stores in Postgres (pgvector).
-    Safe to call multiple times because it is idempotent.
-    """
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    resume_path = os.path.join(base_dir, "..", "my-portfolio", "public", "documents", "resume.pdf")
+    resume_path = os.path.join(base_dir, "assets", "resume.pdf")
 
     if not os.path.exists(resume_path):
         raise RuntimeError(f"Resume PDF not found at {resume_path}")
 
     reader = PdfReader(resume_path)
     full_text = "\n\n".join((page.extract_text() or "") for page in reader.pages).strip()
+
     if not full_text:
-        raise RuntimeError("Resume PDF text extraction returned empty content")
+        raise RuntimeError("Resume PDF extraction returned empty text")
 
     chunks = chunk_text(full_text)
 
