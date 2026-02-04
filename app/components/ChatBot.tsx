@@ -107,7 +107,7 @@ const ChatBot: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-4 sm:right-6 z-40 w-[95vw] max-w-sm sm:max-w-md bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl shadow-2xl shadow-black/40 flex flex-col">
+        <div className="fixed bottom-24 left-4 right-4 sm:left-auto sm:right-6 z-40 w-auto sm:w-[420px] bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl shadow-2xl shadow-black/40 flex flex-col overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gradient-to-r from-slate-900 to-slate-800 rounded-t-2xl">
             <div>
               <p className="text-sm font-semibold text-white">
@@ -153,14 +153,14 @@ const ChatBot: React.FC = () => {
           </div>
 
           <div className="border-t border-gray-200 p-3">
-            <div className="flex items-end gap-2">
+            <div className="flex items-end gap-2 min-w-0">
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about Brad’s background…"
                 rows={1}
-                className="flex-1 resize-none rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="flex-1 min-w-0 resize-none rounded-xl border border-gray-200 bg-white px-3 py-2 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
               <button
                 type="button"
