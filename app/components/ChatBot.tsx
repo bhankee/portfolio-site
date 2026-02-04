@@ -17,7 +17,7 @@ const ChatBot: React.FC = () => {
       id: "welcome",
       role: "assistant",
       content:
-        "Hi, I’m Brad’s portfolio assistant. Ask me about his experience, skills, or projects!",
+        "Hi, I’m Brad’s RAG based portfolio assistant. Ask me about his experience, skills, or projects!",
     },
   ]);
   const [isSending, setIsSending] = useState(false);
@@ -46,8 +46,11 @@ const ChatBot: React.FC = () => {
 
     try {
       const payloadMessages = [
-        ...messages.map((m) => ({ role: m.role, content: m.content })),
-        { role: "user" as const, content: trimmed },
+        ...messages.map((message) => ({
+          role: message.role,
+          content: message.content,
+        })),
+        { role: "user", content: trimmed },
       ];
 
       const res = await fetch("/api/chat", {
@@ -65,7 +68,7 @@ const ChatBot: React.FC = () => {
         throw new Error(data?.error || "Failed to get response.");
       }
 
-      const data = (await res.json()) as { reply: string };
+      const data = await res.json();
 
       const assistantMessage: ChatMessage = {
         id: `${Date.now()}-assistant`,
@@ -82,16 +85,15 @@ const ChatBot: React.FC = () => {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+  const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter") {
       e.preventDefault();
-      void handleSend();
+      await handleSend();
     }
   };
 
   return (
     <>
-      {/* Floating toggle button */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
@@ -104,16 +106,12 @@ const ChatBot: React.FC = () => {
         </span>
       </button>
 
-      {/* Chat panel */}
       {isOpen && (
         <div className="fixed bottom-24 right-4 sm:right-6 z-40 w-[95vw] max-w-sm sm:max-w-md bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl shadow-2xl shadow-black/40 flex flex-col">
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gradient-to-r from-slate-900 to-slate-800 rounded-t-2xl">
             <div>
               <p className="text-sm font-semibold text-white">
-                Brad’s Portfolio Chat
-              </p>
-              <p className="text-xs text-slate-200">
-                Ask about experience, skills, or projects.
+                Brad’s RAG Portfolio Assistant
               </p>
             </div>
             <button
@@ -122,7 +120,7 @@ const ChatBot: React.FC = () => {
               className="text-slate-200 hover:text-white transition"
               aria-label="Close chat"
             >
-              <X className="w-4 h-4" />
+              <X className="w-4 h-4 text-slate-200" strokeWidth={4} />
             </button>
           </div>
 
@@ -141,7 +139,7 @@ const ChatBot: React.FC = () => {
                   className={`rounded-2xl px-3 py-2 text-sm shadow-sm max-w-[85%] ${
                     msg.role === "user"
                       ? "bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900"
-                      : "bg-slate-100 text-slate-900"
+                      : "bg-blue-100 text-slate-900"
                   }`}
                 >
                   {msg.content}
@@ -166,9 +164,9 @@ const ChatBot: React.FC = () => {
               />
               <button
                 type="button"
-                onClick={() => void handleSend()}
+                onClick={async () => await handleSend()}
                 disabled={isSending || !input.trim()}
-                className="inline-flex items-center justify-center rounded-full bg-blue-600 text-white p-2 shadow-sm disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-500 transition"
+                className="inline-flex items-center justify-center rounded-full bg-blue-300 text-white p-2 shadow-sm disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-400 transition"
                 aria-label="Send message"
               >
                 {isSending ? (
