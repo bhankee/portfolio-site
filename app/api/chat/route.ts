@@ -7,50 +7,67 @@ type ChatMessage = {
 
 export async function POST(req: NextRequest) {
   try {
+    // Parse request body
     const body = (await req.json()) as {
-      messages: ChatMessage[];
+      messages?: ChatMessage[];
     };
 
-    const pythonApiUrl = process.env.NEXT_PUBLIC_RAG_API_URL;
+    // Read backend base URL from env
+    const pythonApiBase = process.env.NEXT_PUBLIC_RAG_API_URL;
 
-    if (!pythonApiUrl) {
+    if (!pythonApiBase) {
       return NextResponse.json(
         {
           error:
-            "Chat backend is not configured. Please set NEXT_PUBLIC_RAG_API_URL on the server.",
+            "Chat backend is not configured. Please set NEXT_PUBLIC_RAG_API_URL.",
         },
         { status: 500 },
       );
     }
 
-    const res = await fetch(pythonApiUrl, {
+    // Ensure no trailing slash and append /chat
+    const backendUrl = `${pythonApiBase.replace(/\/+$/, "")}/chat`;
+
+    // Call Python RAG backend
+    const res = await fetch(backendUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ messages: body.messages ?? [] }),
+      body: JSON.stringify({
+        messages: body.messages ?? [],
+      }),
+      cache: "no-store",
     });
 
+    // Read raw text so we don't lose backend error details
+    const text = await res.text();
+
     if (!res.ok) {
-      const data = (await res.json().catch(() => null)) as {
-        error?: string;
-      } | null;
-      console.error("Python RAG backend error:", data);
+      console.error("Python RAG backend error:", res.status, text);
+
       return NextResponse.json(
-        { error: data?.error || "Python chat backend returned an error." },
-        { status: 500 },
+        {
+          error: "Python chat backend returned an error.",
+          status: res.status,
+          backend: text,
+        },
+        { status: 502 },
       );
     }
 
-    const data = (await res.json()) as { reply: string };
+    // Parse successful response
+    const data = JSON.parse(text) as { reply: string };
 
-    return NextResponse.json({
-      reply: data.reply,
-    });
-  } catch (error) {
-    console.error("Chat API proxy error:", error);
+    return NextResponse.json({ reply: data.reply });
+  } catch (err: any) {
+    console.error("Chat API proxy error:", err);
+
     return NextResponse.json(
-      { error: "Something went wrong while calling the chat backend." },
+      {
+        error: "Unexpected error while calling chat backend.",
+        detail: err?.message ?? String(err),
+      },
       { status: 500 },
     );
   }
