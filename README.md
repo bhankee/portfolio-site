@@ -70,3 +70,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 Utilizes Resend to handle email
 [Docs](https://resend.com/docs/send-with-vercel-functions)
+Send email with downloadable PDF file.
