@@ -2,6 +2,7 @@ import About from "./components/About";
 import Expertise from "./components/Expertise";
 import ContactForm from "./components/ContactForm";
 import Projects from "./components/Projects";
+import VideoCarousel from "./components/VideoCarousel";
 import EmailCaptureModal from "./components/EmailCaptureModal";
 
 export default function Home() {
@@ -13,6 +14,9 @@ export default function Home() {
       <main className="w-full space-y-8 md:space-y-12">
         <section id="about" className="w-full pt-24 md:pt-32">
           <About />
+        </section>
+        <section id="videos" className="w-full px-4 sm:px-0">
+          <VideoCarousel />
         </section>
         <section id="expertise" className="w-full px-4 sm:px-0">
           <Expertise />
